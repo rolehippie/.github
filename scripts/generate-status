@@ -16,18 +16,9 @@ Octokit::Client.new(
   File.write(
     File.expand_path("../../STATUS.md", __FILE__),
     ERB.new(
-      DATA.read,
+      File.expand_path("../../templates/status.erb").read,
       nil,
       "-"
     ).result
   )
 end
-
-__END__
-# Status
-
-| Repo | General | Readme | Galaxy |
-| --- | --- | --- | --- |
-<%- @repos.each do |row| -%>
-| [<%= row %>](https://github.com/rolehippie/<%= row %>) | [![Testing Build](https://github.com/rolehippie/<%= row %>/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/general.yml) | [![Readme Build](https://github.com/rolehippie/<%= row %>/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/readme.yml) | [![Galaxy Build](https://github.com/rolehippie/<%= row %>/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/galaxy.yml) |
-<%- end -%>
