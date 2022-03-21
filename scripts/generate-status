@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+require "erb"
+require "octokit"
+
+Octokit.configure do |c|
+  c.auto_paginate = true
+end
+
+Octokit::Client.new(
+  access_token: ENV["GITHUB_TOKEN"]
+).tap do |client|
+  @repos = client.org_repos("rolehippie").map(&:name).sort.reject do |row|
+    [".github"].include? row
+  end
+
+  File.write(
+    File.expand_path("../../STATUS.md", __FILE__),
+    ERB.new(
+      DATA.read,
+      nil,
+      "-"
+    ).result
+  )
+end
+
+__END__
+# Status
+
+| Repo | General | Readme | Galaxy |
+| --- | --- | --- | --- |
+<%- @repos.each do |row| -%>
+| [<%= row %>](https://github.com/rolehippie/<%= row %>) | [![Testing Build](https://github.com/rolehippie/<%= row %>/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/general.yml) | [![Readme Build](https://github.com/rolehippie/<%= row %>/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/readme.yml) | [![Galaxy Build](https://github.com/rolehippie/<%= row %>/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/galaxy.yml) |
+<%- end -%>
