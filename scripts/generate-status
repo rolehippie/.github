@@ -14,9 +14,17 @@ Octokit::Client.new(
   end
 
   File.write(
-    File.expand_path("../../STATUS.md", __FILE__),
+    File.expand_path(
+      "../../STATUS.md",
+      __FILE__
+    ),
     ERB.new(
-      File.expand_path("../../templates/status.erb").read,
+      File.read(
+        File.expand_path(
+          "../../templates/status.erb",
+           __FILE__
+        )
+      ),
       nil,
       "-"
     ).result
