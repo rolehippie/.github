@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.BOT_ACCESS_TOKEN }}
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
@@ -33,7 +35,7 @@ jobs:
           author_name: GitHub Actions
           author_email: github@webhippie.de
           add: STATUS.md
-          message: automated status update [skip ci]
+          message: "docs: automated status update [skip ci]"
           push: true
           commit: --signoff
 
