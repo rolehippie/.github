@@ -25,8 +25,7 @@ Octokit::Client.new(
            __FILE__
         )
       ),
-      nil,
-      "-"
+      trim_mode: "-"
     ).result
   )
 end
