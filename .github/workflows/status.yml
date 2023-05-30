@@ -20,8 +20,6 @@ jobs:
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
 
       - name: Write time
         run: date >| .github/STATUS
