@@ -1,7 +1,0 @@
----
-rules:
-  exclude_files:
-    - molecule/ubuntu/tests
-    - README.md
-
-...
