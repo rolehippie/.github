@@ -18,14 +18,13 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
 
-      - name: Write time
-        run: date >| .github/STATUSDATE
-
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0
           bundler-cache: true
+
+      - name: Write time
+        run: date >| .github/STATUS
 
       - name: Execute script
         env:
@@ -37,7 +36,7 @@ jobs:
         with:
           author_name: GitHub Actions
           author_email: github@webhippie.de
-          add: STATUS.md .github/STATUSDATE
+          add: STATUS.md .github/STATUS
           message: "docs: automated status update [skip ci]"
           push: true
           commit: --signoff
