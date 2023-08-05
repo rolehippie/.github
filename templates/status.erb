@@ -1,7 +1,7 @@
 # Status
+<%- @repos.each do |r| -%><%- unless r[:workflows].empty? -%>
 
-| Repo | General | Readme | Galaxy |
-| --- | --- | --- | --- |
-<%- @repos.each do |row| -%>
-| [<%= row %>](https://github.com/rolehippie/<%= row %>) | [![Testing Build](https://github.com/rolehippie/<%= row %>/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/general.yml) | [![Readme Build](https://github.com/rolehippie/<%= row %>/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/readme.yml) | [![Galaxy Build](https://github.com/rolehippie/<%= row %>/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/<%= row %>/actions/workflows/galaxy.yml) |
-<%- end -%>
+## <%= r[:name] %>
+<%- r[:workflows].each do |w| -%>[![<%= w %> build](https://github.com/rolehippie/<%= r[:name] %>/actions/workflows/<%= w %>.yml/badge.svg)](https://github.com/rolehippie/<%= r[:name] %>/actions/workflows/<%= w %>.yml)<%= " " unless r[:workflows].last == w %><%- end -%>
+
+<%- end -%><%- end -%>

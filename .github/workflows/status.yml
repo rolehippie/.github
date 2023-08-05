@@ -2,9 +2,7 @@
 name: status
 
 "on":
-  push:
-    branches:
-      - master
+  workflow_dispatch:
   schedule:
     - cron:  "30 5 * * *"
 
@@ -23,7 +21,7 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Write time
+      - name: Write date
         run: date >| .github/STATUS
 
       - name: Execute script

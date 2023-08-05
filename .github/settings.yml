@@ -59,7 +59,12 @@ branches:
         contexts: []
       enforce_admins: false
       restrictions:
+        apps:
+          - renovate
         users: []
-        teams: []
+        teams:
+          - admins
+          - bots
+          - members
 
 ...
