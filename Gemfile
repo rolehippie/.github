@@ -1,3 +1,3 @@
 source "https://rubygems.org"
-gem "octokit", "~> 8.0"
+gem "octokit", "~> 9.0"
 gem "faraday-retry", "~> 2.2"
