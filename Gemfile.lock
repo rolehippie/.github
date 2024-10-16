@@ -11,7 +11,7 @@ GEM
       net-http
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    json (0.4.3)
+    json (2.3.0)
     logger (1.6.1)
     net-http (0.4.1)
       uri
