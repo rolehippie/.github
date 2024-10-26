@@ -25,6 +25,7 @@ GEM
     uri (0.13.1)
 
 PLATFORMS
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -32,4 +33,4 @@ DEPENDENCIES
   octokit (~> 9.0)
 
 BUNDLED WITH
-   2.4.12
+   2.5.16
