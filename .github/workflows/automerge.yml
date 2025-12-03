@@ -15,7 +15,7 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    if: github.repository_owner == 'rolehippie' && github.actor == 'dependabot[bot]'
 
     steps:
       - name: Generate token
