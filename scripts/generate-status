@@ -1,21 +1,21 @@
 #!/usr/bin/env ruby
-require "erb"
-require "octokit"
+require 'erb'
+require 'octokit'
 
 Octokit.configure do |c|
   c.auto_paginate = true
 end
 
 Octokit::Client.new(
-  access_token: ENV["GITHUB_TOKEN"]
+  access_token: ENV.fetch('GITHUB_TOKEN', nil)
 ).tap do |client|
-  @repos = client.org_repos("rolehippie").sort_by(&:name).reject do |row|
-    [".github"].include? row.name or row.archived?
+  @repos = client.org_repos('rolehippie').sort_by(&:name).reject do |row|
+    ['.github'].include? row.name or row.archived?
   end.map do |row|
     workflows = client.contents(row.full_name, path: '.github/workflows', query: { ref: 'master' }).map do |w|
-      w.name.delete_suffix(".yml")
+      w.name.delete_suffix('.yml')
     end.delete_if do |r|
-      ["automerge"].include? r
+      ['automerge'].include? r
     end
 
     {
@@ -28,17 +28,17 @@ Octokit::Client.new(
 
   File.write(
     File.expand_path(
-      "../../STATUS.md",
-      __FILE__
+      '../STATUS.md',
+      __dir__
     ),
     ERB.new(
       File.read(
         File.expand_path(
-          "../../templates/status.erb",
-           __FILE__
+          '../templates/status.erb',
+          __dir__
         )
       ),
-      trim_mode: "-"
+      trim_mode: '-'
     ).result
   )
 end

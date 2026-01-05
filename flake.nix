@@ -60,6 +60,15 @@
                     nixfmt-rfc-style = {
                       enable = true;
                     };
+
+                    terraform-format = {
+                      enable = true;
+                      package = pkgs.terraform;
+                    };
+
+                    tflint = {
+                      enable = true;
+                    };
                   };
                 };
 
@@ -70,11 +79,12 @@
                   };
                   ruby = {
                     enable = true;
-                    package = pkgs.ruby;
+                    package = pkgs.ruby_4_0;
                   };
                 };
 
                 packages = with pkgs; [
+                  _1password-cli
                   nixfmt-rfc-style
                 ];
               };
