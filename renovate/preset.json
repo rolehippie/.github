@@ -96,6 +96,7 @@
       "pinDigests": false
     }
   ],
+  "automergeType": "pr",
   "labels": [
     "renovate"
   ]
