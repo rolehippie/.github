@@ -1,0 +1,12 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[tools]
+node = "24"
+pipx = "1.15.0"
+pre-commit = "4.6.1"
+ruby = "4.0.6"
+terraform = "1.15.7"
+tflint = "0.63.1"
+
+[settings.ruby]
+compile = false

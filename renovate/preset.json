@@ -5,14 +5,12 @@
   ],
   "extends": [
     "config:best-practices",
+    ":automergeDigest",
     ":disableRateLimiting",
     ":prImmediately",
     ":semanticCommits",
     ":semanticCommitType(deps)"
   ],
-  "dockerfile": {
-    "pinDigests": true
-  },
   "regexManagers": [
     {
       "fileMatch": [
