@@ -1,8 +1,15 @@
 variable "organization" {
-  default = "rolehippie"
+  description = "Name of the managed organization"
+  type        = string
+  default     = "rolehippie"
 }
 
 variable "members" {
+  description = "List of members to manage"
+  type = list(object({
+    name = string
+    role = string
+  }))
   default = [
     {
       name = "bothippie"
@@ -16,6 +23,16 @@ variable "members" {
 }
 
 variable "teams" {
+  description = "List of teams to manage"
+  type = list(object({
+    name       = string
+    privacy    = string
+    permission = string
+    members = list(object({
+      name = string
+      role = string
+    }))
+  }))
   default = [
     {
       name       = "admins"
