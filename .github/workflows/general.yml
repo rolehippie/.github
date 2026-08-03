@@ -31,9 +31,9 @@ jobs:
         run: bundle install
 
       - name: Execute script
-        run: bundle exec scripts/generate-status
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bundle exec scripts/generate-status
 
   terraform:
     runs-on: ubuntu-latest

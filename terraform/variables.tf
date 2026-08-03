@@ -1,11 +1,5 @@
-variable "organization" {
-  description = "Name of the managed organization"
-  type        = string
-  default     = "rolehippie"
-}
-
 variable "members" {
-  description = "List of members to manage"
+  description = "List of GitHub organization members"
   type = list(object({
     name = string
     role = string
@@ -23,7 +17,7 @@ variable "members" {
 }
 
 variable "teams" {
-  description = "List of teams to manage"
+  description = "List of GitHub teams with members"
   type = list(object({
     name       = string
     privacy    = string

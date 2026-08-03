@@ -16,5 +16,5 @@ terraform {
 }
 
 provider "github" {
-  owner = var.organization
+  owner = "rolehippie"
 }
